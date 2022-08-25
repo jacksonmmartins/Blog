@@ -7,7 +7,8 @@ const bodyParser = require('body-parser');
 //pegando rotas adimin
 const admin = require('./routs/admin');
 //trabalhando com diretórios
-const path = require('path')
+const path = require('path');
+const { default: mongoose } = require('mongoose');
 //const mongoose = require('mongoose');
 
 // configurações
@@ -21,7 +22,12 @@ const path = require('path')
     app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}));
     app.set('view engine', 'handlebars');
     //mongoose
-
+    mongoose.connect("mongodb+srv://app_test:clarice21@Cluster0.184n6.mongodb.net/?retryWrites=true&w=majority",{useNewUrlParser: true, useUnifiedTopology: true})
+    .then(()=>{
+        console.log("DB connected")
+    }).catch(()=>{
+        console.log("DB connection failed")
+    })
 
 //rotas
     app.get('/', (req,res)=>{
