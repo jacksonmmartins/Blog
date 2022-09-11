@@ -8,10 +8,25 @@ const bodyParser = require('body-parser');
 const admin = require('./routs/admin');
 //trabalhando com diretórios
 const path = require('path');
-const { default: mongoose } = require('mongoose');
-//const mongoose = require('mongoose');
-
+//const { default: mongoose } = require('mongoose');
+const mongoose = require('mongoose');
+//express session
+const session = require('express-session')
+const flash = require('connect-flash')
 // configurações
+    // session midleware
+        app.use(session({
+            secret:'cursodenode',
+            resave:true,
+            saveUninitialized: true
+        }))
+        app.use(flash())
+        //midleware
+        app.use((req,res,next)=>{
+            res.locals.sucess_msg = req.flash("sucess_msg")
+            res.locals.error_msg = req.flash('error_msg')
+            next()
+        })
     //body parser
     app.use(bodyParser.urlencoded({ extended: false }))
     app.use(bodyParser.json())
@@ -36,6 +51,10 @@ const { default: mongoose } = require('mongoose');
     app.use('/admin', admin)
 //public referencia dos arquivos estáticos, caminho absoluto
     app.use(express.static(path.join(__dirname,'public')))
+    app.use((req,res,next)=>{
+        console.log('Olá eu sou um midleware')
+        next()
+    })
 
 //outros
 const port = 3000;
