@@ -1,0 +1,7 @@
+show databases;
+
+use blogapp;
+
+show collections;
+
+db.categorias.find();
