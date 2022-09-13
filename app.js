@@ -23,9 +23,9 @@ const flash = require('connect-flash')
         app.use(flash())
         //midleware
         app.use((req,res,next)=>{
-            res.locals.sucess_msg = req.flash("sucess_msg")
-            res.locals.error_msg = req.flash('error_msg')
-            next()
+            res.locals.success_msg = req.flash('success_msg');
+            res.locals.error_msg = req.flash('error_msg');
+            next();
         })
     //body parser
     app.use(bodyParser.urlencoded({ extended: false }))
