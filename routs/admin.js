@@ -135,7 +135,7 @@ router.post('/postagens/nova',(req,res)=>{
             res.redirect('/admin/postagens/add')
         }).catch((err)=>{
             req.flash('error_msg','Houve um erro ao salvar a postagem')
-            res.redirect('admin/postagens')
+            res.redirect('/admin/postagens')
         })
     }
 })
