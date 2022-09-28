@@ -3,12 +3,14 @@
 <a href="/admin/postagens/add"><button class="btn btn-success">Nova Postagem</button></a>
 
 {{#each postagens}}
-    <div class="card-body">
+    <div class="card mt-4">
         <div class="card-body">
             <h4>{{titulo}}</h4>
             <p>{{descricao}}</p>
-            <small>{{data}}</small>
-            <small>{{categoria}}</small>
+            <small>{{date}}</small><br>
+            <small>{{conteudo}}</small><br>
+            <small>{{categoria.nome}}</small><br>
+            <a href="/admin/postagens/edit/{{_id}}"><button class="btn btn-success mt-3">Editar Postagem</button></a>
         </div>
     </div>
 {{else}}

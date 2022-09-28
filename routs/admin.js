@@ -97,13 +97,13 @@ router.post('/categorias/deletar', (req,res)=>{
 })
 
 router.get('/postagens', (req,res) => {
-    Postagem.find().populate('categoria').sort({data:'desc'}).then((postagens)=>{
+    Postagem.find().lean().populate('categoria').sort({date:'desc'}).then((postagens)=>{
         res.render('admin/postagens',{postagens: postagens})
     }).catch((err)=>{
         req.flash('error_msg','Houve um erro ao listar as postagens')
         res.redirect('/admin')
     })
-    res.render('admin/postagens')
+    
 })
 
 router.get('/postagens/add', (req,res)=>{
@@ -132,12 +132,16 @@ router.post('/postagens/nova',(req,res)=>{
         }
         new Postagem(novaPostagem).save().then(()=>{
             req.flash('success_msg', 'Postagem criada com sucesso!')
-            res.redirect('/admin/postagens/add')
+            res.redirect('/admin/postagens')
         }).catch((err)=>{
             req.flash('error_msg','Houve um erro ao salvar a postagem')
             res.redirect('/admin/postagens')
         })
     }
+})
+
+router.get('/postagens/edit/:id',(req,res)=>{
+    res.render('admin/editpostagem')
 })
 
 module.exports = router
