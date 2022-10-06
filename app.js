@@ -13,6 +13,9 @@ const mongoose = require('mongoose');
 //express session
 const session = require('express-session')
 const flash = require('connect-flash')
+//model de postagm
+require('./models/Postagem')
+const Postagem = mongoose.model('postagens')
 // configurações
     // session midleware
         app.use(session({
@@ -46,13 +49,20 @@ const flash = require('connect-flash')
 
 //rotas
     app.get('/', (req,res)=>{
-        res.send('Está é a rota principal')
+        Postagem.find().lean().populate('categoria').sort({data:'desc'}).then((postagens)=>{
+            res.render('index', {postagens: postagens})
+        }).catch((err)=>{
+            req.flash('error_msg', 'Houve um erro interno')
+            res.redirect('/404')
+        })
+    })
+    app.get('/404',(req,res)=>{
+        res.send('Erro 404!')
     })
     app.use('/admin', admin)
 //public referencia dos arquivos estáticos, caminho absoluto
     app.use(express.static(path.join(__dirname,'public')))
     app.use((req,res,next)=>{
-        console.log('Olá eu sou um midleware')
         next()
     })
 
