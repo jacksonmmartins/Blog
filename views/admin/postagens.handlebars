@@ -11,6 +11,11 @@
             <small>Conteúdo: {{conteudo}}</small><br>
             <small>Categoria: {{categoria.nome}}</small><br>
             <a href="/admin/postagens/edit/{{_id}}"><button class="btn btn-success mt-3">Editar Postagem</button></a>
+            <!Botão deletar postagem>
+                <form action="/admin/postagens/deletar" method="POST">
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <button type="submit" class="btn btn-danger mt-4">Deletar Postagem</button>
+                </form>
         </div>
     </div>
 {{else}}
