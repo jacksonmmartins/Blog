@@ -49,7 +49,7 @@ const Postagem = mongoose.model('postagens')
 
 //rotas
     app.get('/', (req,res)=>{
-        Postagem.find().lean().populate('categoria').sort({data:'desc'}).then((postagens)=>{
+        Postagem.find().populate('categoria').sort({data:'desc'}).lean().then((postagens)=>{
             res.render('index', {postagens: postagens})
         }).catch((err)=>{
             req.flash('error_msg', 'Houve um erro interno')
@@ -63,7 +63,7 @@ const Postagem = mongoose.model('postagens')
     app.get("/postagens/:slug", (req,res)=>{
         Postagem.findOne({slug: req.params.slug}).lean().then((postagem)=>{
             if(postagem){
-                res.render('postagens/index', {postagem: postagem})
+                res.render('admin/index', {postagem: postagem})
             } else{
                 req.flash('error_msg','Esta postagem não existe')
                 res.redirect("/")
