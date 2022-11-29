@@ -60,10 +60,10 @@ const Postagem = mongoose.model('postagens')
         res.send('Erro 404!')
     })
 
-    app.get("/postagens/:slug", (req,res)=>{
+    app.get("/postagem/:slug", (req,res)=>{
         Postagem.findOne({slug: req.params.slug}).lean().then((postagem)=>{
             if(postagem){
-                res.render('admin/index', {postagem: postagem})
+                res.render('postagem/index', {postagem: postagem})
             } else{
                 req.flash('error_msg','Esta postagem não existe')
                 res.redirect("/")

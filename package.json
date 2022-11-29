@@ -6,7 +6,7 @@
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
     "handlebars": "^4.7.7",
-    "mongoose": "^6.6.6",
+    "mongoose": "^6.7.3",
     "nodemon": "^2.0.20"
   },
   "name": "blog",
@@ -19,5 +19,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackscod2021/Blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jackscod2021/Blog/issues"
+  },
+  "homepage": "https://github.com/jackscod2021/Blog#readme",
   "description": ""
 }
