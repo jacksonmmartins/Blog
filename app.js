@@ -19,6 +19,8 @@ const Postagem = mongoose.model('postagens')
 //model categorias listar
 require('./models/Categoria')
 const Categoria = mongoose.model('categorias')
+//usuario
+const usuarios = require ('./routs/usuario')
 // configurações
     // session midleware
         app.use(session({
@@ -62,6 +64,8 @@ const Categoria = mongoose.model('categorias')
     app.get('/404',(req,res)=>{
         res.send('Erro 404!')
     })
+    //usuario
+   app.use('/usuarios', usuarios)
 
     app.get("/postagem/:slug", (req,res)=>{
         Postagem.findOne({slug: req.params.slug}).lean().then((postagem)=>{
