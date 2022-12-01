@@ -5,3 +5,11 @@ use blogapp;
 show collections;
 
 db.categorias.find();
+
+show databases;
+
+use blogapp;
+
+show collections;
+
+db.usuarios.find();

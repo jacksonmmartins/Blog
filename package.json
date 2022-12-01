@@ -8,7 +8,9 @@
     "express-session": "^1.17.3",
     "handlebars": "^4.7.7",
     "mongoose": "^6.7.4",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
   },
   "name": "blog",
   "version": "1.0.0",
