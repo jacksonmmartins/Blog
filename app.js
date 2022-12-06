@@ -129,7 +129,7 @@ require('./config/auth')(passport)
     })
 
 //outros
-const port = 3000;
+const PORT  = process.env.PORT || 3000;
 app.listen(port, ()=> {
     console.log(`A aplicação está rodando no endereço http://localhost:${port}`);
 })
