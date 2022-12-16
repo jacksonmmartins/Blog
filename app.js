@@ -70,6 +70,14 @@ require('./config/auth')(passport)
             res.redirect('/404')
         })
     })
+    app.get('/home', (req,res)=>{
+        Postagem.find().populate('categoria').sort({data:'desc'}).lean().then((postagens)=>{
+            res.render('home', {postagens: postagens})
+        }).catch((err)=>{
+            req.flash('error_msg', 'Houve um erro interno')
+            res.redirect('/404')
+        })
+    })
     app.get('/404',(req,res)=>{
         res.send('Erro 404!')
     })
@@ -118,7 +126,7 @@ require('./config/auth')(passport)
                 })
             }else{
                 req.flash('error_msg', 'Esta categoria não existe')
-                res.rredirect('/')
+                res.redirect('/')
             }
 
             

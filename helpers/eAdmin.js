@@ -4,6 +4,6 @@ module.exports = {
             return next()
         }
             req.flash('error_msg', 'Você precisa ser Administrador')
-            res.redirect('/')
+            res.redirect('/home')
     }
 }

@@ -1,22 +1,14 @@
-<div class="jumbotron">
-  <h1 class="display-4">Bem vindo ao Blog do Node</h1>
-  <p class="lead">Onde cresceremos junto com você nesta conquista.</p>
-  <p>Nosso trabalho nunca para, nossa energia é você</p>
-  <a class="btn btn-primary btn-lg" href="#" role="button">Crie uma conta</a>
+<div class="position-absolute top-50 start-50 translate-middle">
+<div class="card">
+  <h5 class="card-header text-center bg-warning">
+    <div class="bg-warning">
+      Aviso!
+    </div>  
+  </h5>
+  <div class="card-body bg-light text-center">
+    <h5 class="card-title">Este site é apenas para fins demonstrativos</h5>
+    <p class="card-text">Clicando no botão abaixo você concordará que o site é para fins ilustrativos</p>
+    <a href="/home" class="btn btn-primary">Eu concordo</a>
+  </div>
 </div>
-<hr>
-<h2>Postagens recentes</h2>
-{{#each postagens}}
-<div class="card  mt-4">
-    <div class="card-body">
-        <h3>{{titulo}}</h3>
-        <p>{{descricao}}</p>
-        <a href="/postagem/{{slug}}"><button class="btn btn-success">Leia Mais</button></a>
-        <hr>
-        <small>Categoria: {{categoria.nome}}</small><br>
-        <small>Data de publicação: {{date}}</small>
-    </div>
 </div>
-{{else}}
-    <h5>Nenhuma postagem</h5>
-{{/each}}

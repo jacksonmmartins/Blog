@@ -7,8 +7,8 @@ require('../models/Postagem')
 const Postagem = mongoose.model('postagens')
 const {eAdmin} = require('../helpers/eAdmin')
 
-router.get('/', eAdmin, (req,res)=>{
-    res.render("admin/index")
+router.get('/home', eAdmin, (req,res)=>{
+    res.render("admin/home")
 })
 
 router.get('/post', eAdmin,(req,res)=>{
@@ -20,7 +20,7 @@ router.get('/categorias', eAdmin, (req,res) =>{
         res.render('admin/categorias',{categorias: categorias})
     }).catch((err)=>{
         req.flash('error_msg','Houve um erro ao listar as categorias')
-        res.redirect('/admin')
+        res.redirect('/home')
     })
    
 })
