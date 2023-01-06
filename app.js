@@ -1,5 +1,6 @@
 // configurações do express
 // carregando modulos
+require ('dotenv').config()
 const express = require('express');
 const handlebars = require('express-handlebars');
 const app = express();
@@ -54,13 +55,15 @@ require('./config/auth')(passport)
     app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}));
     app.set('view engine', 'handlebars');
     //mongoose
-    mongoose.connect("mongodb+srv://app_test:clarice21@Cluster0.184n6.mongodb.net/?retryWrites=true&w=majority",{useNewUrlParser: true, useUnifiedTopology: true})
-    .then(()=>{
-        console.log("DB connected")
-    }).catch(()=>{
-        console.log("DB connection failed")
-    })
+    const dbUser = process.env.DB_USER
+    const dbPassword = process.env.DB_PASS
 
+    mongoose.connect(`mongodb+srv://${dbUser}:${dbPassword}@Cluster0.184n6.mongodb.net/JWT?retryWrites=true&w=majority`).then(()=>{
+        app.listen(3000)
+        console.log("Conectou-se ao BD")
+    }).catch((err)=>{
+    console.log(err)
+    })
 //rotas
     app.get('/', (req,res)=>{
         
@@ -134,7 +137,3 @@ require('./config/auth')(passport)
     })
 
 //outros
-const PORT  = process.env.PORT || 3000;
-app.listen(PORT, ()=> {
-    console.log(`A aplicação está rodando no endereço http://localhost:${PORT}`);
-})
